@@ -10,16 +10,7 @@ Getting Started
 
 # R Session Info
 ```
-R version 4.0.3 (2020-10-10)
-Platform: x86_64-w64-mingw32/x64 (64-bit)
-Running under: Windows 10 x64 (build 19043)
-
-Matrix products: default
-
-locale:
-[1] LC_COLLATE=English_United Kingdom.1252  LC_CTYPE=English_United Kingdom.1252   
-[3] LC_MONETARY=English_United Kingdom.1252 LC_NUMERIC=C                           
-[5] LC_TIME=English_United Kingdom.1252    
+R version 4.0.3 (2020-10-10) 
 
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
