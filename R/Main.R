@@ -77,7 +77,6 @@ for (i in 1:nsims) {
 }
 
 lcps2 <- do.call(rbind, lcps)
-
 lcps3 <- sf::st_drop_geometry(lcps2)
 
 #FS = fractal surface, 240 = 2.40 fractal dimension, 4 = neighbours, 1000 = nsims 
@@ -141,10 +140,9 @@ ggplot2::ggsave(filename = "methods_plot_01.png", plot = methods_plot1, path = "
 ##### RESULTS PLOT ONE #####
 ############################
 
-lcps <- read.csv("./Output/Data/FS_240_4_1000.csv")
-lcps2 <- lcps[lcps$normalised_pdi == 0,]
+lcps3 <- lcps3[lcps3$normalised_pdi == 0,]
 
-lcp_df1 <- as.data.frame(table(lcps2$cf1_type, lcps2$cf2_type))
+lcp_df1 <- as.data.frame(table(lcps3$cf1_type, lcps3$cf2_type))
 
 lcp_df1 <- lcp_df1 %>%
   group_by(Var1) %>%
@@ -173,7 +171,7 @@ ggplot2::ggsave(plot = results_plot1, filename = "./Output/Figures/results_plot_
 ##### RESULTS PLOT TWO #####
 ############################
 
-lcp_df2 <- as.data.frame(table(lcps2$cf1_type, lcps2$cf2))
+lcp_df2 <- as.data.frame(table(lcps3$cf1_type, lcps3$cf2))
 
 lcp_df2 <- lcp_df2 %>%
   group_by(Var1) %>%
@@ -196,7 +194,5 @@ results_plot2 <- ggplot(lcp_df2, aes(x = Var2, y = perc, fill = cf2_type)) +
   theme_classic() + 
   theme(legend.position = "bottom") + 
   theme(legend.title = element_text( size=8), legend.text=element_text(size=8))
-
-results_plot2
 
 ggplot2::ggsave(plot = results_plot2, filename = "./Output/Figures/results_plot_02.png", width = 6, height = 4, dpi = 300)
