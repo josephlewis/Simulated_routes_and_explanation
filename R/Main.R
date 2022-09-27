@@ -6,9 +6,6 @@ library(sf)
 library(dplyr)
 library(ggplot2)
 
-#setwd("/export/home/jl2094/routepath_lengths")
-#setwd("~/28_06_2021/Simulated_Routes_and_Equifinality")
-
 ################
 ################
 #### SET-UP ####
@@ -140,9 +137,9 @@ ggplot2::ggsave(filename = "methods_plot_01.png", plot = methods_plot1, path = "
 ##### RESULTS PLOT ONE #####
 ############################
 
-lcps3 <- lcps3[lcps3$normalised_pdi == 0,]
+lcps4 <- lcps3[lcps3$normalised_pdi == 0,]
 
-lcp_df1 <- as.data.frame(table(lcps3$cf1_type, lcps3$cf2_type))
+lcp_df1 <- as.data.frame(table(lcps4$cf1_type, lcps4$cf2_type))
 
 lcp_df1 <- lcp_df1 %>%
   group_by(Var1) %>%
@@ -171,7 +168,7 @@ ggplot2::ggsave(plot = results_plot1, filename = "./Output/Figures/results_plot_
 ##### RESULTS PLOT TWO #####
 ############################
 
-lcp_df2 <- as.data.frame(table(lcps3$cf1_type, lcps3$cf2))
+lcp_df2 <- as.data.frame(table(lcps4$cf1_type, lcps4$cf2))
 
 lcp_df2 <- lcp_df2 %>%
   group_by(Var1) %>%
@@ -180,7 +177,7 @@ lcp_df2 <- lcp_df2 %>%
   arrange(Freq)
 
 colnames(lcp_df2) <- c("cf1_type", "cf2", "Freq", "perc")
-lcp_df2 <- left_join(x = lcp_df2, y = unique(lcps2[c("cf2", "cf2_type")]), by = "cf2")
+lcp_df2 <- left_join(x = lcp_df2, y = unique(lcps4[c("cf2", "cf2_type")]), by = "cf2")
 lcp_df2$cf2_type <- factor(lcp_df2$cf2_type, levels = c("Time-based", "Energy-based", "Wheel-based"))
 lcp_df2$Var2 <- factor(lcp_df2$cf2, levels = as.character(unique(lcp_df2$cf2)))
 
