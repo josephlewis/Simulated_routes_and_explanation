@@ -5,7 +5,7 @@ This repository contains all the data and R scripts required to fully reproduce 
 Getting Started
 ---------------
 
-1. Open project using Incorporating-Uncertainty-in-Least-Cost-Path-Modelling.Rproj to ensure relative paths work.
+1. Open project using Simulated_routes_and_explanation.Rproj to ensure relative paths work.
 2. Run the Main.R R script in the R folder to reproduce the analysis.
 
 License
