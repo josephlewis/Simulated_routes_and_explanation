@@ -1,5 +1,3 @@
-library(devtools)
-install_github("josephlewis/leastcostpath@dev")
 library(leastcostpath)
 library(terra)
 library(sf)
@@ -114,7 +112,8 @@ for (i in 1:length(cfs)) {
 
 cf_df <- do.call(rbind, cf_df)
 cf_df$type <- factor(cf_df$type, levels = c("Time-based", "Energy-based", "Wheel-based"))
-cf_df$cf <- factor(cf_df$cf, levels = cfs)
+cf_df$cf <- tools::toTitleCase(cf_df$cf)
+cf_df$cf <- factor(cf_df$cf, levels = tools::toTitleCase(cfs))
 
 methods_plot1 <- ggplot(cf_df) + 
   geom_vline(xintercept = 0, lty = 2, colour = "grey80", size = 0.2) +
